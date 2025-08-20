@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Key | $ Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a3e95;
+            --secondary: #6853ff;
+            --accent: #ff5722;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #ffffff;
+            --gray: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(106, 62, 149, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(104, 83, 255, 0.15) 0%, transparent 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .key-container {
+            text-align: center;
+            background: rgba(26, 26, 26, 0.8);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(104, 83, 255, 0.2);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .key-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(104, 83, 255, 0.3);
+        }
+
+        .key-code {
+            background: var(--darker);
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            color: var(--light);
+            margin-bottom: 2rem;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .key-code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(104, 83, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .copy-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0 auto;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(106, 62, 149, 0.3);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(106, 62, 149, 0.4);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .success-message {
+            color: #4CAF50;
+            font-weight: 600;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .success-message.show {
+            opacity: 1;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(104, 83, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(104, 83, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .key-code {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .key-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .key-title {
+                font-size: 2rem;
+            }
+            
+            .key-code {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            
+            .back-btn {
+                top: 10px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles-js"></div>
+    
+    <button class="back-btn" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <div class="key-container">
+        <h1 class="key-title">Your Premium Key</h1>
+        
+        <div class="key-code" id="keyCode">
+            Key-K93KR92KD9j921jd9921K-SHUB
+        </div>
+        
+        <button class="copy-btn" id="copyBtn">
+            <i class="fas fa-copy"></i> Copy Key
+        </button>
+        
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> Key copied successfully!
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": ["#6a3e95", "#6853ff", "#ff5722"]
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#6853ff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Copy key functionality
+        const copyBtn = document.getElementById('copyBtn');
+        const keyCode = document.getElementById('keyCode');
+        const successMessage = document.getElementById('successMessage');
+
+        copyBtn.addEventListener('click', function() {
+            const keyText = keyCode.textContent;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(keyText).then(function() {
+                // Show success message
+                successMessage.classList.add('show');
+                copyBtn.classList.add('copied');
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                
+                // Reset after 3 seconds
+                setTimeout(function() {
+                    successMessage.classList.remove('show');
+                    copyBtn.classList.remove('copied');
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy Key';
+                }, 3000);
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy key. Please try again.');
+            });
+        });
+
+        // Go back function
+        function goBack() {
+            window.history.back();
+        }
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                goBack();
+            }
+        });
+    </script>
+</body>
+</html>
