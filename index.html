@@ -3,20 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$ Hub | Premium Roblox Scripts</title>
+    <title>$ Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #6a3e95;
-            --secondary: #6853ff;
-            --accent: #ff5722;
-            --dark: #0a0a0a;
-            --darker: #050505;
-            --light: #ffffff;
-            --gray: #1a1a1a;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -24,705 +13,294 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(106, 62, 149, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(104, 83, 255, 0.15) 0%, transparent 50%);
-        }
-
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
+            text-align: center;
         }
 
-        header {
-            text-align: center;
-            padding: 3rem 0;
-            position: relative;
-            overflow: hidden;
+        /* Header */
+        .header {
+            margin-bottom: 3rem;
+            padding: 2rem 0;
         }
 
         .logo {
-            font-size: 4.5rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(104, 83, 255, 0.3);
-            position: relative;
-            display: inline-block;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s ease;
-        }
-
-        .logo:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .tagline {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-
-        .btn {
-            position: relative;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            min-width: 220px;
-            text-align: center;
+            width: 200px;
+            height: 80px;
+            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .logo img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-            z-index: -1;
+            object-fit: contain;
+            filter: brightness(1.2);
         }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        .site-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
         }
 
-        .btn:hover::before {
-            transform: translateX(100%);
-        }
-
-        .btn-scriptblox {
-            background: linear-gradient(45deg, var(--primary), #7d4dac);
-        }
-
-        .btn-rscripts {
-            background: linear-gradient(45deg, #444, #666);
-            color: var(--dark);
-        }
-
-        .btn-discord {
-            background: linear-gradient(45deg, var(--secondary), #7d6bff);
-        }
-
-        .btn-key {
-            background: linear-gradient(45deg, var(--accent), #ff7043);
+        /* Sections */
+        .section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 4rem 0 2rem;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-            border-radius: 3px;
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            margin: 3rem auto;
-            perspective: 1000px;
-        }
-
-        .carousel {
-            display: flex;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-style: preserve-3d;
-        }
-
-        .partner-card {
-            min-width: 300px;
-            padding: 1.5rem;
-            margin: 0 1rem;
-            background: var(--gray);
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-        }
-
-        .partner-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(104, 83, 255, 0.2);
-            border-color: rgba(104, 83, 255, 0.3);
-        }
-
-        .partner-img {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
+        .section-content {
+            color: #999999;
+            font-size: 1rem;
+            line-height: 1.6;
             margin-bottom: 1.5rem;
-            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
-            transition: all 0.5s ease;
         }
 
-        .partner-card:hover .partner-img {
-            filter: drop-shadow(0 10px 15px rgba(104, 83, 255, 0.3));
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            margin: 0.5rem;
         }
 
-        .partner-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-align: center;
-            color: var(--light);
-            margin-top: 1rem;
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
 
-        .carousel-nav {
+        .btn-scriptblox {
+            background: rgba(106, 62, 149, 0.2);
+            border-color: rgba(106, 62, 149, 0.3);
+        }
+
+        .btn-rscripts {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-key {
+            background: rgba(255, 87, 34, 0.2);
+            border-color: rgba(255, 87, 34, 0.3);
+        }
+
+        .btn-discord {
+            background: rgba(88, 101, 242, 0.2);
+            border-color: rgba(88, 101, 242, 0.3);
+        }
+
+        /* Button Grid */
+        .buttons-grid {
             display: flex;
             justify-content: center;
-            margin-top: 2rem;
+            flex-wrap: wrap;
             gap: 1rem;
+            margin: 1rem 0;
         }
 
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .nav-dot.active {
-            background: var(--secondary);
-            transform: scale(1.3);
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 5rem;
-            background: linear-gradient(to top, var(--darker), transparent);
-            position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(104, 83, 255, 0.5), transparent);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .social-link {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.4);
+        .contact-info {
+            color: #999999;
             font-size: 0.9rem;
-            margin-top: 1.5rem;
+            line-height: 1.8;
         }
 
-        /* Fullscreen Video Overlay */
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s ease;
+        .contact-info a {
+            color: #cccccc;
+            text-decoration: none;
         }
 
-        .video-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
-        .video-container {
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            position: relative;
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .video-container video {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 0 50px rgba(104, 83, 255, 0.3);
-        }
-
-        .close-video {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .close-video:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .scroll-indicator {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--secondary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 100;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(104, 83, 255, 0.3);
-        }
-
-        .scroll-indicator:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
+            .site-title {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
             .logo {
-                font-size: 3.5rem;
+                width: 150px;
+                height: 60px;
+            }
+            
+            .buttons-grid {
+                flex-direction: column;
+                align-items: center;
             }
             
             .btn {
-                min-width: 100%;
+                width: 200px;
+                margin: 0.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 2rem;
             }
             
-            .partner-card {
-                min-width: 250px;
+            .section {
+                padding: 1rem;
             }
-
-            .video-container {
-                width: 95%;
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                width: 180px;
             }
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .floating {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .pulse {
-            animation: pulse 2s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles-js"></div>
-    
     <div class="container">
-        <header>
-            <h1 class="logo floating">$ Hub</h1>
-            <p class="tagline">Premium Roblox Scripts & Exploits</p>
-        </header>
-        
-        <div class="buttons">
-            <a href="https://scriptblox.com/script/Universal-Script-Dollar-Hub-47561" class="btn btn-scriptblox">
-                <i class="fas fa-code"></i> We on ScriptBlox
-            </a>
-            <a href="https://rscripts.net/script/dollar-hub-330-games-xvfT" class="btn btn-rscripts">
-                <i class="fas fa-scroll"></i> We on RScripts
-            </a>
-            <a href="https://discord.gg/gavwVwNNDC" class="btn btn-discord">
-                <i class="fab fa-discord"></i> Our Discord Server
-            </a>
-            <a href="get-key.html" class="btn btn-key">
-                <i class="fas fa-key"></i> Get Key
-            </a>
-        </div>
-        
-        <h2 class="section-title">Our Partners</h2>
-        
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/6a3e95/ffffff?text=Solara+Hub" alt="Solara Hub" class="partner-img">
-                    <div class="partner-name">Partner</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/6853ff/ffffff?text=Partner+2" alt="Partner 2" class="partner-img">
-                    <div class="partner-name">Partner 2</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/ff5722/ffffff?text=Partner+3" alt="Partner 3" class="partner-img">
-                    <div class="partner-name">Partner 3</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/1a1a1a/ffffff?text=Partner+4" alt="Partner 4" class="partner-img">
-                    <div class="partner-name">Partner 4</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/6a3e95/ffffff?text=Partner+5" alt="Partner 5" class="partner-img">
-                    <div class="partner-name">Partner 5</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/6853ff/ffffff?text=Partner+6" alt="Partner 6" class="partner-img">
-                    <div class="partner-name">Partner 6</div>
-                </div>
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://cdn.discordapp.com/attachments/1397332778714136658/1408552757409087568/asYK4EQ.png?ex=68aad13b&is=68a97fbb&hm=d1428cee189763cc6d0ca1830fcff557e7b1ab9604b86e11f3912d609b4107b1" alt="$ Hub Logo">
             </div>
-            
-            <div class="carousel-nav" id="carousel-nav">
-                <!-- Dots will be added by JavaScript -->
+            <h1 class="site-title">$ Hub</h1>
+        </div>
+
+        <!-- ScriptBlox Section -->
+        <div class="section">
+            <h2 class="section-title">$ Hub</h2>
+            <p class="section-content">
+                We on ScriptBlox
+            </p>
+            <div class="buttons-grid">
+                <a href="https://scriptblox.com/script/Universal-Script-Dollar-Hub-47561" class="btn btn-scriptblox">
+                    <i class="fas fa-code"></i> ScriptBlox
+                </a>
             </div>
         </div>
-    </div>
-    
-    <footer>
-        <p class="copyright">© 2025 $ Hub. All rights reserved.</p>
-    </footer>
 
-    <!-- Fullscreen Video Overlay -->
-    <div class="video-overlay" id="videoOverlay">
-        <div class="video-container">
-            <video id="fullscreenVideo" controls>
-                <source src="/video/intro.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <button class="close-video" id="closeVideo">
-                <i class="fas fa-times"></i>
-            </button>
+        <div class="divider"></div>
+
+        <!-- RScripts Section -->
+        <div class="section">
+            <h2 class="section-title">$ Hub</h2>
+            <p class="section-content">
+                We on RScripts
+            </p>
+            <div class="buttons-grid">
+                <a href="https://rscripts.net/script/dollar-hub-330-games-xvfT" class="btn btn-rscripts">
+                    <i class="fas fa-scroll"></i> RScripts
+                </a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Get Key Section -->
+        <div class="section">
+            <h2 class="section-title">$ Hub</h2>
+            <p class="section-content">
+                Get your access key
+            </p>
+            <div class="buttons-grid">
+                <a href="get-key.html" class="btn btn-key">
+                    <i class="fas fa-key"></i> Get Key
+                </a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Discord Section -->
+        <div class="section">
+            <h2 class="section-title">$ Hub</h2>
+            <p class="section-content">
+                Join our Discord community!
+            </p>
+            <div class="buttons-grid">
+                <a href="https://discord.gg/gavwVwNNDC" class="btn btn-discord">
+                    <i class="fab fa-discord"></i> Discord Server
+                </a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="contact-info">
+                Contact us: contact@dollarhub.com<br>
+                Telegram: @dollarhub_support
+            </div>
         </div>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <div class="scroll-indicator" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles.js configuration
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": ["#6a3e95", "#6853ff", "#ff5722"]
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#6853ff",
-                    "opacity": 0.2,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-
-        // Carousel functionality
+        // Simple fade-in animation
         document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('carousel');
-            const carouselNav = document.getElementById('carousel-nav');
-            const cards = document.querySelectorAll('.partner-card');
-            const cardCount = cards.length;
-            let currentIndex = 0;
-            const cardsPerSlide = 3;
-            
-            // Create navigation dots
-            for (let i = 0; i < Math.ceil(cardCount / cardsPerSlide); i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('nav-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    goToSlide(i);
-                });
-                carouselNav.appendChild(dot);
-            }
-            
-            function goToSlide(index) {
-                currentIndex = index;
-                const offset = -currentIndex * (100 / cardsPerSlide);
-                carousel.style.transform = `translateX(${offset}%)`;
+            const elements = document.querySelectorAll('.section, .header, .footer');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 
-                // Update active dot
-                document.querySelectorAll('.nav-dot').forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
-            }
-            
-            // Auto-rotate carousel
-            setInterval(() => {
-                const nextIndex = (currentIndex + 1) % Math.ceil(cardCount / cardsPerSlide);
-                goToSlide(nextIndex);
-            }, 5000);
-            
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                goToSlide(currentIndex);
-            });
-
-            // Video overlay functionality
-            const videoOverlay = document.getElementById('videoOverlay');
-            const fullscreenVideo = document.getElementById('fullscreenVideo');
-            const closeVideo = document.getElementById('closeVideo');
-            const scrollToTop = document.getElementById('scrollToTop');
-            let videoShown = false;
-
-            // Show video when scrolled 2 screen heights
-            window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY;
-                const windowHeight = window.innerHeight;
-                
-                if (scrollPosition > windowHeight * 2 && !videoShown) {
-                    videoOverlay.classList.add('active');
-                    fullscreenVideo.play();
-                    videoShown = true;
-                    document.body.style.overflow = 'hidden';
-                }
-
-                // Show scroll to top button
-                if (scrollPosition > 500) {
-                    scrollToTop.style.display = 'flex';
-                } else {
-                    scrollToTop.style.display = 'none';
-                }
-            });
-
-            // Close video
-            closeVideo.addEventListener('click', function() {
-                videoOverlay.classList.remove('active');
-                fullscreenVideo.pause();
-                fullscreenVideo.currentTime = 0;
-                document.body.style.overflow = 'auto';
-            });
-
-            // Close video on overlay click
-            videoOverlay.addEventListener('click', function(e) {
-                if (e.target === videoOverlay) {
-                    videoOverlay.classList.remove('active');
-                    fullscreenVideo.pause();
-                    fullscreenVideo.currentTime = 0;
-                    document.body.style.overflow = 'auto';
-                }
-            });
-
-            // Scroll to top functionality
-            scrollToTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // Close video with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && videoOverlay.classList.contains('active')) {
-                    videoOverlay.classList.remove('active');
-                    fullscreenVideo.pause();
-                    fullscreenVideo.currentTime = 0;
-                    document.body.style.overflow = 'auto';
-                }
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
             });
         });
     </script>
