@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RC7 Remake</title>
+  <style>
+    body {
+      margin: 0;
+      background: #203c48;
+      color: #ddd;
+      font-family: monospace;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    .logo {
+      margin-right: 20px;
+    }
+    .logo img {
+      height: 50px;
+    }
+    h1 {
+      font-size: 18px;
+    }
+    .rc7-wrapper {
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+    .rc7-img {
+      width: 350px;
+      transition: transform 0.2s ease-out;
+      transform-style: preserve-3d;
+      border-radius: 8px;
+    }
+    .text {
+      margin: 30px auto;
+      width: 70%;
+      font-size: 15px;
+      line-height: 1.5em;
+      text-align: center;
+    }
+    .download-btn {
+      display: block;
+      margin: 20px auto;
+      width: 150px;
+      text-align: center;
+      padding: 12px 25px;
+      background: #666;
+      color: #fff;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+    .download-btn:hover {
+      background: #555;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .footer a {
+      color: #6d6dff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="https://cdn.discordapp.com/attachments/1397332778714136658/1409540147413782619/image.png?ex=68adc00f&is=68ac6e8f&hm=31c3bac33d7f9b49cf2853541df256607a8f62bff46098eab043060484753b51" alt="RC7 Logo">
+    </div>
+  </div>
+
+  <div class="rc7-wrapper">
+    <img src="https://cdn.discordapp.com/attachments/1397332778714136658/1409539425217544273/image.png?ex=68adbf62&is=68ac6de2&hm=97569799d660ae6da7c67a5f4681c7dd0cbbbc50d6b6cc64e1fe3a4ca23a7dd6" 
+         alt="RC7" 
+         class="rc7-img" 
+         id="rc7">
+  </div>
+
+  <div class="text">
+    Today we have 85 UNC. Executor is have jjsploit api.<br>
+    This executor is not FE because disable filtering is impossible hard.<br>
+    We maked this executor because, all guys who have friends who know rc7 can show<br>
+    this executor to other friends and like do something!
+  </div>
+
+  <a class="download-btn" href="https://dollarhub.space/RC7byDollar.rar">Download</a>
+
+  <div class="footer">
+    <a href="https://discord.gg/4ukPFduQB6" target="_blank">Discord</a>
+    <a href="https://t.me/dollarhub_support" target="_blank">t.me/dollarhub_support</a>
+  </div>
+
+  <script>
+    const rc7 = document.getElementById("rc7");
+    const wrapper = document.querySelector(".rc7-wrapper");
+
+    wrapper.addEventListener("mousemove", (e) => {
+      const rect = wrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateX = (y / rect.height) * 20;
+      const rotateY = -(x / rect.width) * 20;
+
+      rc7.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    wrapper.addEventListener("mouseleave", () => {
+      rc7.style.transform = "rotateX(0) rotateY(0)";
+    });
+  </script>
+</body>
+</html>
