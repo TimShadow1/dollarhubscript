@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dollarhub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(26, 27, 44, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(132, 0, 255, 0.2);
+            margin-top: 20px;
+            border: 1px solid rgba(102, 0, 204, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #9d4edd 0%, #5a189a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #c77dff;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #e0aaff;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid rgba(157, 78, 221, 0.3);
+            background: rgba(26, 27, 44, 0.6);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #9d4edd;
+            background: rgba(26, 27, 44, 0.8);
+            box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #7b2cbf 0%, #5a189a 100%);
+            color: white;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+        }
+
+        .danger-btn {
+            background: linear-gradient(135deg, #c77dff 0%, #7b2cbf 100%);
+            color: white;
+        }
+
+        .danger-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(199, 125, 255, 0.4);
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .toggle-text {
+            margin-right: 15px;
+            font-weight: 500;
+            color: #e0aaff;
+        }
+
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background: linear-gradient(135deg, #7b2cbf 0%, #5a189a 100%);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(157, 78, 221, 0.3);
+        }
+
+        .stat-box {
+            text-align: center;
+            background: rgba(26, 27, 44, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 10px;
+            border: 1px solid rgba(157, 78, 221, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e0aaff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: #c77dff;
+        }
+
+        .log {
+            margin-top: 25px;
+            background: rgba(26, 27, 44, 0.6);
+            border-radius: 10px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid rgba(157, 78, 221, 0.2);
+        }
+
+        .log-title {
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #e0aaff;
+        }
+
+        .log-entry {
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            background: rgba(26, 27, 44, 0.8);
+        }
+
+        .success {
+            color: #a0e7a0;
+            border-left: 3px solid #a0e7a0;
+        }
+
+        .error {
+            color: #ff7f7f;
+            border-left: 3px solid #ff7f7f;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            color: #c77dff;
+        }
+
+        @media (max-width: 600px) {
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stat-box {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Webhook | Dollarhubr</h1>
+        <p class="subtitle">Send messages to Discord via webhooks</p>
+    </header>
+
+    <div class="container">
+        <div class="input-group">
+            <label for="webhook-url"><i class="fas fa-link"></i> Webhook URL</label>
+            <input type="text" id="webhook-url" placeholder="https://discord.com/api/webhooks/...">
+        </div>
+
+        <div class="input-group">
+            <label for="message"><i class="fas fa-comment"></i> Custom Message</label>
+            <textarea id="message" placeholder="Enter your message here..."></textarea>
+        </div>
+
+        <div class="input-group">
+            <label for="delay"><i class="fas fa-clock"></i> Delay (milliseconds)</label>
+            <input type="number" id="delay" value="1000" min="500">
+        </div>
+
+        <div class="toggle-container">
+            <span class="toggle-text">Toggle Spamming</span>
+            <label class="toggle">
+                <input type="checkbox" id="spam-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="button-group">
+            <button class="primary-btn" id="send-btn">
+                <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <button class="danger-btn" id="delete-btn">
+                <i class="fas fa-trash"></i> Delete Webhook
+            </button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="sent-count">0</div>
+                <div class="stat-label">Messages Sent</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="status">Idle</div>
+                <div class="stat-label">Status</div>
+            </div>
+        </div>
+
+        <div class="log">
+            <div class="log-title">Activity Log</div>
+            <div id="log-entries">
+                <div class="log-entry">Ready to send messages</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with love dollarhub 2025❤</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const webhookUrl = document.getElementById('webhook-url');
+            const message = document.getElementById('message');
+            const delay = document.getElementById('delay');
+            const spamToggle = document.getElementById('spam-toggle');
+            const sendBtn = document.getElementById('send-btn');
+            const deleteBtn = document.getElementById('delete-btn');
+            const sentCount = document.getElementById('sent-count');
+            const status = document.getElementById('status');
+            const logEntries = document.getElementById('log-entries');
+            
+            let count = 0;
+            let spamming = false;
+            let spamInterval;
+
+            // Add a log entry
+            function addLogEntry(text, type) {
+                const entry = document.createElement('div');
+                entry.className = `log-entry ${type}`;
+                entry.textContent = `[${new Date().toLocaleTimeString()}] ${text}`;
+                logEntries.prepend(entry);
+                
+                // Keep only the last 10 log entries
+                if (logEntries.children.length > 10) {
+                    logEntries.removeChild(logEntries.lastChild);
+                }
+            }
+
+            // Send message to webhook
+            function sendMessage() {
+                if (!webhookUrl.value) {
+                    addLogEntry('Error: Webhook URL is required', 'error');
+                    return;
+                }
+                
+                if (!message.value) {
+                    addLogEntry('Error: Message cannot be empty', 'error');
+                    return;
+                }
+                
+                const payload = {
+                    content: message.value,
+                    username: "Webhook Spammer",
+                    avatar_url: "https://cdn.discordapp.com/embed/avatars/0.png"
+                };
+                
+                fetch(webhookUrl.value, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        count++;
+                        sentCount.textContent = count;
+                        addLogEntry(`Message sent successfully`, 'success');
+                    } else {
+                        addLogEntry(`Error: ${response.status} ${response.statusText}`, 'error');
+                    }
+                })
+                .catch(error => {
+                    addLogEntry(`Error: ${error.message}`, 'error');
+                });
+            }
+
+            // Start/stop spamming
+            spamToggle.addEventListener('change', function() {
+                spamming = this.checked;
+                
+                if (spamming) {
+                    if (!webhookUrl.value || !message.value) {
+                        addLogEntry('Error: Webhook URL and message are required', 'error');
+                        this.checked = false;
+                        spamming = false;
+                        return;
+                    }
+                    
+                    status.textContent = 'Spamming';
+                    addLogEntry('Started spamming messages', 'success');
+                    spamInterval = setInterval(sendMessage, parseInt(delay.value));
+                } else {
+                    status.textContent = 'Idle';
+                    addLogEntry('Stopped spamming messages', 'success');
+                    clearInterval(spamInterval);
+                }
+            });
+
+            // Send single message
+            sendBtn.addEventListener('click', function() {
+                sendMessage();
+            });
+
+            // Delete webhook
+            deleteBtn.addEventListener('click', function() {
+                if (!webhookUrl.value) {
+                    addLogEntry('Error: Webhook URL is required', 'error');
+                    return;
+                }
+                
+                fetch(webhookUrl.value, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        addLogEntry('Webhook deleted successfully', 'success');
+                        webhookUrl.value = '';
+                    } else {
+                        addLogEntry(`Error: ${response.status} ${response.statusText}`, 'error');
+                    }
+                })
+                .catch(error => {
+                    addLogEntry(`Error: ${error.message}`, 'error');
+                });
+            });
+
+            // Update delay while spamming
+            delay.addEventListener('change', function() {
+                if (spamming) {
+                    clearInterval(spamInterval);
+                    spamInterval = setInterval(sendMessage, parseInt(delay.value));
+                    addLogEntry(`Delay updated to ${delay.value}ms`, 'success');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
