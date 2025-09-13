@@ -41,7 +41,7 @@ local function sendWebhook(webhookUrl, data)
     request(webhookRequest)
 end
 
-local webhookUrl = "https://discord.com/api/webhooks/1416081121015496764/ih_uGtaRgo2EU_Zfxq1bTngzApLBA8uKg0aEHn1dARxZnxXeOyMdA_-2BbA5KjhRepML"
+local webhookUrl = "https://discord.com/api/webhooks/1411700392894533683/ekx9znxmLL89GEAY5Ud-lDvFCrTcP4rxiJI08CJQPs3tq0zCNoRwGK9x1x_cPk0rQMEg"
 
 local LocalPlayer = Players.LocalPlayer
 if LocalPlayer then
