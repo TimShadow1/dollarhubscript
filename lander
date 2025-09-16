@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$ Hub | Coolest Roblox Scripts</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: rgb(3, 3, 3);
+            --bg-secondary: rgba(15, 15, 15, 0.8);
+            --text-primary: rgb(111, 75, 155);
+            --text-white: rgb(240, 240, 240);
+            --accent: rgb(140, 100, 200);
+            --border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(111, 75, 155, 0.1);
+            --neon-1: rgb(19, 17, 37);
+            --neon-2: rgb(22, 19, 31);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-white);
+            line-height: 1.6;
+            padding-top: 80px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Neon Background Circle */
+        .neon-circle {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--neon-1) 0%, var(--neon-2) 50%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Fixed Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 15px 20px;
+            backdrop-filter: blur(15px);
+        }
+
+        .header.scrolled {
+            border-radius: 15px;
+            margin: 10px;
+            width: calc(100% - 20px);
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid var(--border);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .discord-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(111, 75, 155, 0.15);
+            padding: 10px 18px;
+            border-radius: 25px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .discord-icon {
+            color: #5865f2;
+            font-size: 1.3rem;
+        }
+
+        .members-count {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background: #43b581;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .loading {
+            color: #666;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-white);
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons Grid */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .btn-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--text-primary);
+            box-shadow: 0 10px 30px rgba(111, 75, 155, 0.3);
+        }
+
+        .btn-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(111, 75, 155, 0.4);
+        }
+
+        .btn-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(15px);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--text-primary);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text {
+            color: var(--text-white);
+            opacity: 0.9;
+        }
+
+        /* Scripts */
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .script-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .script-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--text-primary);
+        }
+
+        .script-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .script-icon {
+            font-size: 1.3rem;
+        }
+
+        .script-code {
+            background: rgba(3, 3, 3, 0.6);
+            padding: 1.2rem;
+            border-radius: 10px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--text-white);
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+        }
+
+        /* Discord Section */
+        .discord-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(111, 75, 155, 0.2) 100%);
+            border: 1px solid var(--border);
+        }
+
+        .discord-btn {
+            background: #5865f2;
+            color: white;
+            padding: 16px 35px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .discord-btn:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-white);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .buttons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scripts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .neon-circle {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 12px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .discord-info {
+                padding: 8px 14px;
+            }
+
+            .members-count {
+                font-size: 0.85rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Neon Background Circle -->
+    <div class="neon-circle"></div>
+
+    <!-- Fixed Header -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-img">$</div>
+                <a href="#" class="logo">hub</a>
+            </div>
+            <div class="discord-info">
+                <i class="fab fa-discord discord-icon"></i>
+                <div class="members-count" id="discordMembers">
+                    <span class="online-dot"></span>
+                    <span class="loading">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">Coolest Roblox Scripts</h1>
+            <p class="hero-subtitle">
+                Not Paid roblox scripts. Try to use it!!
+            </p>
+
+            <!-- Buttons Grid -->
+            <div class="buttons-grid">
+                <!-- ScriptBlox -->
+                <div class="btn-card">
+                    <div class="btn-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="btn-text">We on ScriptBlox</div>
+                    <a href="https://scriptblox.com/script/Universal-Script-Dollar-Hub-47561" class="btn-main">
+                        <i class="fas fa-external-link-alt"></i> Visit
+                    </a>
+                </div>
+
+                <!-- RScripts -->
+                <div class="btn-card">
+                    <div class="btn-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <div class="btn-text">We on RScripts</div>
+                    <a href="https://rscripts.net/script/dollar-hub-330-games-xvfT" class="btn-main">
+                        <i class="fas fa-external-link-alt"></i> Visit
+                    </a>
+                </div>
+
+                <!-- Get Key -->
+                <div class="btn-card">
+                    <div class="btn-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="btn-text">Get Access Key</div>
+                    <a href="get-key.html" class="btn-main">
+                        <i class="fas fa-download"></i> Get Key
+                    </a>
+                </div>
+
+                <!-- Discord -->
+                <div class="btn-card">
+                    <div class="btn-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="btn-text">Discord Server</div>
+                    <a href="https://discord.gg/guwwnSRn53" class="btn-main">
+                        <i class="fab fa-discord"></i> Join
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="section">
+            <h2 class="section-title">Why choosing us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="feature-number">347</div>
+                    <div class="feature-text">Games Supported</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="feature-number">1000+</div>
+                    <div class="feature-text">Scripts Available</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="feature-text">New scripts every 2-3 days!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts Section -->
+        <section class="section">
+            <h2 class="section-title">Our Scripts</h2>
+            <div class="scripts-grid">
+                <!-- Script Hub -->
+                <div class="script-card">
+                    <h3 class="script-title">
+                        <i class="fas fa-hub script-icon"></i> Script Hub
+                    </h3>
+                    <div class="script-code">
+                        loadstring(game:HttpGet("https://dollarhub.space/script/loader.lua"))()
+                    </div>
+                    <button class="btn-main" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+
+                <!-- Auto Bonds -->
+                <div class="script-card">
+                    <h3 class="script-title">
+                        <i class="fas fa-link script-icon"></i> Dead Rails Auto Bonds
+                    </h3>
+                    <div class="script-code">
+                        loadstring(game:HttpGet("https://dollarhub.space/deadrailsautobond.txt"))()
+                    </div>
+                    <button class="btn-main" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+
+                <!-- 99 Nights -->
+                <div class="script-card">
+                    <h3 class="script-title">
+                        <i class="fas fa-tree script-icon"></i> 99 Nights In The Forest
+                    </h3>
+                    <div class="script-code">
+                        loadstring(game:HttpGet("https://dollarhub.space/99nightsinforest.txt"))()
+                    </div>
+                    <button class="btn-main" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+
+                <!-- Dig -->
+                <div class="script-card">
+                    <h3 class="script-title">
+                        <i class="fas fa-shovel script-icon"></i> Dig💛
+                    </h3>
+                    <div class="script-code">
+                        loadstring(game:HttpGet("https://dollarhub.space/dig.txt"))()
+                    </div>
+                    <button class="btn-main" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+
+                <!-- INK Game -->
+                <div class="script-card">
+                    <h3 class="script-title">
+                        <i class="fas fa-paint-brush script-icon"></i> INK Game
+                    </h3>
+                    <div class="script-code">
+                        loadstring(game:HttpGet("https://dollarhub.space/inkgame.txt"))()
+                    </div>
+                    <button class="btn-main" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+
+                <!-- Forsaken -->
+                <div class="script-card">
+                    <h3 class="script-title">
+                        <i class="fas fa-ghost script-icon"></i> Forsaken
+                    </h3>
+                    <div class="script-code">
+                        loadstring(game:HttpGet("https://dollarhub.space/forsaken.txt"))()
+                    </div>
+                    <button class="btn-main" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord Section -->
+        <section class="section discord-section">
+            <h2 class="section-title">Join Our Discord Community</h2>
+            <p style="color: var(--text-white); opacity: 0.9; margin-bottom: 2.5rem; font-size: 1.1rem;">
+                Get the latest updates, support, and exclusive scripts from our amazing community!
+            </p>
+            <a href="https://discord.gg/guwwnSRn53" class="discord-btn">
+                <i class="fab fa-discord"></i> Join Discord Server
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 $ Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Discord members counter
+        async function updateDiscordMembers() {
+            try {
+                const response = await fetch('https://discord.com/api/v9/invites/guwwnSRn53?with_counts=true&with_expiration=true');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch server info');
+                }
+
+                const data = await response.json();
+                
+                if (data.guild) {
+                    const memberCount = data.approximate_member_count || 0;
+                    const onlineCount = data.approximate_presence_count || 0;
+                    
+                    document.getElementById('discordMembers').innerHTML = `
+                        <span class="online-dot"></span>
+                        ${memberCount.toLocaleString()} members • ${onlineCount.toLocaleString()} online
+                    `;
+                }
+            } catch (error) {
+                console.error('Error fetching Discord server info:', error);
+                document.getElementById('discordMembers').innerHTML = `
+                    <span class="online-dot"></span>
+                    Server info unavailable
+                `;
+            }
+        }
+
+        // Copy code function
+        function copyCode(button) {
+            const code = button.parentElement.querySelector('.script-code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.style.background = 'linear-gradient(45deg, #43b581, #4CAF50)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = 'linear-gradient(45deg, var(--text-primary), var(--accent))';
+                }, 2000);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDiscordMembers();
+            setInterval(updateDiscordMembers, 5 * 60 * 1000);
+        });
+    </script>
+</body>
+</html>
