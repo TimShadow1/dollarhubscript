@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Cheats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0c0c0c;
+            color: #fff;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(220, 20, 60, 0.1) 0%, transparent 20%);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #c00;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            color: #c00;
+            font-size: 36px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(to right, #ff0000, #ff4d4d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .browser-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background-color: rgba(255, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+        
+        .browser-check i {
+            color: #ff4d4d;
+            font-size: 20px;
+        }
+        
+        .browser-check span {
+            font-weight: 600;
+        }
+        
+        .browser-check.yandex {
+            background-color: rgba(255, 204, 0, 0.15);
+            border-color: rgba(255, 204, 0, 0.4);
+        }
+        
+        .browser-check.yandex i {
+            color: #ffcc00;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(139, 0, 0, 0.05));
+            border-radius: 16px;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff0000, #ff4d4d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid #c00;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .feature i {
+            color: #ff4d4d;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #ff4d4d;
+        }
+        
+        .feature p {
+            color: #bbb;
+            line-height: 1.5;
+        }
+        
+        .activation-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: rgba(20, 20, 20, 0.9);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+        }
+        
+        .activation-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+        }
+        
+        .activation-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #ccc;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .activate-button {
+            background: linear-gradient(135deg, #c00, #ff3333);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 22px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .activate-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+        }
+        
+        .activate-button:active {
+            transform: translateY(0);
+        }
+        
+        .activate-button.disabled {
+            background: linear-gradient(135deg, #555, #777);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .activate-button.disabled:hover {
+            transform: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .yandex-required {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #ffcc00;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        
+        .yandex-required i {
+            font-size: 24px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #c00;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .modal-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .error .modal-icon {
+            color: #ff3333;
+        }
+        
+        .success .modal-icon {
+            color: #33cc33;
+        }
+        
+        .modal-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ff4d4d;
+        }
+        
+        .modal-message {
+            font-size: 18px;
+            color: #ddd;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .modal-button {
+            background: linear-gradient(135deg, #c00, #ff3333);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #fff;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            color: #888;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .feature {
+                padding: 20px;
+            }
+            
+            .activation-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <div class="logo-text">CS2 Cheats</div>
+            </div>
+            <div class="browser-check" id="browserCheck">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>Проверка браузера...</span>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <h1>Лучшие читы для CS2</h1>
+            <p>Только для пользователей Яндекс.Браузера! Самые передовые технологии, невидимость для античита, умный AIM, Wallhack и многое другое. Активируйте прямо сейчас и доминируйте на серверах!</p>
+        </section>
+        
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-bullseye"></i>
+                <h3>Умный AIM</h3>
+                <p>Автоматическое наведение на противников с учетом движения, расстояния и предсказания траектории. Полный контроль над настройками.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-eye"></i>
+                <h3>Wallhack Pro</h3>
+                <p>Видите противников сквозь стены с подсветкой и информацией о здоровье, оружии и расстоянии до цели.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-user-secret"></i>
+                <h3>Полная невидимость</h3>
+                <p>Наш чит полностью невидим для всех античитов. Безопасность гарантирована благодаря уникальной технологии.</p>
+            </div>
+        </section>
+        
+        <section class="activation-section">
+            <h2 class="activation-title">Активация читов CS2</h2>
+            <p class="activation-subtitle">Для использования наших продуктов требуется Яндекс.Браузер. Это необходимо для обеспечения максимальной безопасности и производительности. Нажмите кнопку ниже для активации.</p>
+            
+            <button class="activate-button" id="activateButton">
+                <i class="fas fa-rocket"></i> АКТИВИРОВАТЬ ЧИТЫ
+            </button>
+            
+            <div class="yandex-required">
+                <i class="fab fa-yandex"></i>
+                <span>Требуется Яндекс.Браузер</span>
+            </div>
+        </section>
+        
+        <footer>
+            <p>CS2 Cheats © 2026. Все права защищены.</p>
+        </footer>
+    </div>
+    
+    <!-- Модальное окно ошибки -->
+    <div class="modal" id="errorModal">
+        <div class="modal-content error">
+            <button class="close-modal" id="closeErrorModal">&times;</button>
+            <div class="modal-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 class="modal-title" id="errorTitle">Ошибка</h2>
+            <p class="modal-message" id="errorMessage">Сообщение об ошибке</p>
+            <button class="modal-button" id="closeErrorBtn">Закрыть</button>
+        </div>
+    </div>
+    
+    <!-- Модальное окно успеха -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeSuccessModal">&times;</button>
+            <div class="modal-icon">
+                <i class="fas fa-cog fa-spin"></i>
+            </div>
+            <h2 class="modal-title">Попробуйте попозже</h2>
+            <p class="modal-message">Наши сервера сейчас заняты. Попробуйте активировать читы через некоторое время. Приносим извинения за неудобства.</p>
+            <button class="modal-button" id="closeSuccessBtn">Понятно</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Элементы DOM
+            const activateButton = document.getElementById('activateButton');
+            const browserCheck = document.getElementById('browserCheck');
+            const errorModal = document.getElementById('errorModal');
+            const successModal = document.getElementById('successModal');
+            const closeErrorModal = document.getElementById('closeErrorModal');
+            const closeSuccessModal = document.getElementById('closeSuccessModal');
+            const closeErrorBtn = document.getElementById('closeErrorBtn');
+            const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+            const errorTitle = document.getElementById('errorTitle');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Определяем браузер пользователя
+            function detectBrowser() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                
+                if (userAgent.includes('yabrowser') || userAgent.includes('ya')) {
+                    return 'yandex';
+                } else if (userAgent.includes('chrome')) {
+                    return 'chrome';
+                } else if (userAgent.includes('firefox')) {
+                    return 'firefox';
+                } else if (userAgent.includes('safari')) {
+                    return 'safari';
+                } else if (userAgent.includes('edge')) {
+                    return 'edge';
+                } else if (userAgent.includes('opera')) {
+                    return 'opera';
+                } else {
+                    return 'other';
+                }
+            }
+            
+            // Инициализация при загрузке страницы
+            function init() {
+                const browser = detectBrowser();
+                
+                if (browser === 'yandex') {
+                    // Пользователь в Яндекс.Браузере
+                    browserCheck.innerHTML = '<i class="fab fa-yandex"></i><span>Браузер: Яндекс (доступ разрешен)</span>';
+                    browserCheck.classList.add('yandex');
+                    activateButton.disabled = false;
+                    
+                    // Добавляем обработчик для кнопки активации
+                    activateButton.addEventListener('click', function() {
+                        showServerBusyMessage();
+                    });
+                } else {
+                    // Пользователь не в Яндекс.Браузере
+                    let browserName = 'другого браузера';
+                    
+                    switch(browser) {
+                        case 'chrome': browserName = 'Google Chrome'; break;
+                        case 'firefox': browserName = 'Mozilla Firefox'; break;
+                        case 'safari': browserName = 'Safari'; break;
+                        case 'edge': browserName = 'Microsoft Edge'; break;
+                        case 'opera': browserName = 'Opera'; break;
+                        default: browserName = 'вашего браузера';
+                    }
+                    
+                    browserCheck.innerHTML = `<i class="fas fa-ban"></i><span>Браузер: ${browserName} (доступ запрещен)</span>`;
+                    activateButton.disabled = true;
+                    activateButton.classList.add('disabled');
+                    activateButton.innerHTML = '<i class="fas fa-ban"></i> ДОСТУП ЗАПРЕЩЕН';
+                    
+                    // Показываем ошибку при попытке нажать на кнопку
+                    activateButton.addEventListener('click', function() {
+                        showErrorMessage('Вы не с Яндекса', 'Для использования данного функционала требуется Яндекс.Браузер. Пожалуйста, откройте эту страницу в Яндекс.Браузере и попробуйте снова.');
+                    });
+                }
+            }
+            
+            // Показать сообщение об ошибке
+            function showErrorMessage(title, message) {
+                errorTitle.textContent = title;
+                errorMessage.textContent = message;
+                errorModal.style.display = 'flex';
+            }
+            
+            // Показать сообщение о занятости серверов (для Яндекс.Браузера)
+            function showServerBusyMessage() {
+                successModal.style.display = 'flex';
+            }
+            
+            // Закрыть модальное окно ошибки
+            function closeErrorModalFunc() {
+                errorModal.style.display = 'none';
+            }
+            
+            // Закрыть модальное окно успеха
+            function closeSuccessModalFunc() {
+                successModal.style.display = 'none';
+            }
+            
+            // Обработчики событий для закрытия модальных окон
+            closeErrorModal.addEventListener('click', closeErrorModalFunc);
+            closeErrorBtn.addEventListener('click', closeErrorModalFunc);
+            closeSuccessModal.addEventListener('click', closeSuccessModalFunc);
+            closeSuccessBtn.addEventListener('click', closeSuccessModalFunc);
+            
+            // Закрытие модальных окон при клике вне их области
+            window.addEventListener('click', function(event) {
+                if (event.target === errorModal) {
+                    closeErrorModalFunc();
+                }
+                if (event.target === successModal) {
+                    closeSuccessModalFunc();
+                }
+            });
+            
+            // Запуск инициализации
+            init();
+            
+            // Добавляем случайную симуляцию активности для реалистичности
+            setInterval(() => {
+                if (detectBrowser() === 'yandex') {
+                    const icons = ['fa-rocket', 'fa-bolt', 'fa-fire', 'fa-gamepad'];
+                    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                    
+                    activateButton.innerHTML = `<i class="fas ${randomIcon}"></i> Скачать`;
+                    
+                    // Через 1 секунду возвращаем исходную иконку
+                    setTimeout(() => {
+                        activateButton.innerHTML = '<i class="fas fa-rocket"></i> Скачать';
+                    }, 1000);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
